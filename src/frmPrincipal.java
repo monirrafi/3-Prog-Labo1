@@ -1,30 +1,99 @@
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JToolBar;
-import java.awt.Color;
-import javax.swing.UIManager;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.border.EtchedBorder;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
+import java.awt.*;
+import java.io.*;
 
 public class frmPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
+	public String formatMot(String mot,int max) {
+		String retour ="";
+		int lng = mot.length();
+		if(lng>= max){
+			retour = mot.substring(0, max);
+		}else{
+			retour = mot;
+			for(int i=0;i<max-lng;i++){
+				retour += " ";
+			}
+		}
+		return retour;
+	}
+	public void chargerLivres() {
+			try {
+			BufferedReader tmpReadTxt = new BufferedReader(new FileReader("src\\livres.txt"));
+			RandomAccessFile donnee = new RandomAccessFile(new File("src\\livres.bin"), "rw");
+			String ligne = tmpReadTxt.readLine();
+			String[] elemt = new String[80];
+			int num = 0;
+			String  titre = "";
+			int auteur = 0;
+			int annee = 0;
+			int pages = 0;
+			String cathegorie = "";
+			donnee.seek(0);
+
+			while(ligne != null){
+				elemt = ligne.split(";");
+				num = Integer.parseInt(elemt[0]);
+				titre = formatMot(elemt[1],30);
+				auteur = Integer.parseInt(elemt[2]);
+				annee = Integer.parseInt(elemt[3]);
+				pages = Integer.parseInt(elemt[4]);
+				cathegorie = formatMot(elemt[5],20);
+				
+				
+				//400;Une aventure d'Astérix le gaulois. Le devin;11;1972;48;bandes dessinées 4+30+4+4+4+20=96
+				donnee.writeInt(num);
+				donnee.writeUTF(titre);
+				donnee.writeInt(auteur);
+				donnee.writeInt(annee);
+				donnee.writeInt(pages);
+				donnee.writeUTF(cathegorie);
+				ligne = tmpReadTxt.readLine();
+			}	
+
+				donnee.close();	
+				tmpReadTxt.close();	
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+	public void afficher() {
+		JTextArea retour = new JTextArea();
+		//String retour = "";	
+		try {
+			RandomAccessFile donnee = new RandomAccessFile(new File("src\\livres.bin"), "rw");	
+			System.out.println(donnee.getFilePointer());
+			System.out.println(donnee.length());
+			for (int i = 0 ; i < donnee.length() ; i++)
+                            {
+
+                            donnee.seek(i*74); 
+
+                retour.append(String.valueOf(donnee.readInt()+" "));
+                retour.append(donnee.readUTF()+" ");
+                retour.append(String.valueOf(donnee.readInt()+" "));
+                retour.append(String.valueOf(donnee.readInt()+" "));
+                retour.append(String.valueOf(donnee.readInt()+" "));
+                retour.append(donnee.readUTF()+"\n");
+				System.out.println(donnee.getFilePointer());
+							}
+							donnee.close();
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+			
+			JOptionPane.showMessageDialog(null, retour);			
+	}
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -83,6 +152,8 @@ public class frmPrincipal extends JFrame {
 		gbc_table.gridx = 0;
 		gbc_table.gridy = 1;
 		contentPane.add(table, gbc_table);
+		chargerLivres();
+		afficher();
 	}
 
 }
