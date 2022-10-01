@@ -54,6 +54,7 @@ public class frmPrincipal extends JFrame {
 				donnee.writeInt(annee);
 				donnee.writeInt(pages);
 				donnee.writeUTF(cathegorie);
+				
 				ligne = tmpReadTxt.readLine();
 			}	
 
