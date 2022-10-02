@@ -3,7 +3,7 @@
 200;Une aventure d'Astérix le gaulois. Le cadeau de César;11;1974;48;bandes dessinées
 500;Les filles de Caleb Tome 1. Le chant du coq;1;1985;528;roman
 125;Album de famille;4;1985;454;roman
-642;Les filles de Caleb Tome 2. Le cri de l'oie blanche;1;1986;790;roman
+642;Les filles de Caleb Tome 2.Le cri de l'oie blanche;1;1986;790;roman
 234;Secrets;4;1986;320;roman
 350;La ronde des souvenirs;4;1988;372;roman
 124;Traversées;4;1988;387;roman
@@ -42,9 +42,9 @@
 111;Le grand blanc;5;1994;891;roman
 999;Souviens-toi;6;1994;388;suspense
 222;Ces enfants d'ailleurs Tome 2. L'envol des tourterelles;1;1995;408;roman
-835;Accident;4;1995;344;roman
-836;Le cadeau;4;1995;212;roman
-837;Plein ciel;4;1995;420;roman
+835;Accident                          ;4;1995;344;roman
+836;Le cadeau   ;4;1995;212;roman
+837;Plein ciel  ;4;1995;420;roman
 624;Un monde de rêve;4;1995;384;roman
 625;Cinq jours à Paris;4;1996;245;roman
 526;L'anneau de Cassandra;4;1996;397;roman
@@ -68,4 +68,3 @@
 655;Soins intensifs;2;2001;251;roman
 855;Avant de te dire adieu;6;2001;346;suspense
 114;Prisonniers du temps;10;2001;620;roman
-134;Dans la rue où vit celle que j'aime;6;2002;348;suspense
