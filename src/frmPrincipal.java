@@ -26,7 +26,8 @@ public class frmPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public frmPrincipal() {
-		chargerLivres();
+		//chargerLivres();
+		//afficher();
 		//remplirTable("");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 608, 364);
@@ -40,7 +41,15 @@ public class frmPrincipal extends JFrame {
 		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
-		
+		JButton btn =new JButton("test");
+		GridBagConstraints gbc_tlBar = new GridBagConstraints();
+		gbc_tlBar.insets = new Insets(0, 0, 5, 5);
+		gbc_tlBar.anchor = GridBagConstraints.NORTHWEST;
+		gbc_tlBar.gridx = 0;
+		gbc_tlBar.gridy = 0;
+		contentPane.add(btn, gbc_tlBar);
+
+/*		
 		JToolBar tlBar = new JToolBar();
 		tlBar.setToolTipText("Liste des livres");
 		tlBar.setForeground(Color.BLACK);
@@ -61,6 +70,7 @@ public class frmPrincipal extends JFrame {
 		JComboBox cmbbCathegorie = new JComboBox();
 		cmbbCathegorie.setToolTipText("");
 		tlBar.add(cmbbCathegorie);
+
 		scroll = new JScrollPane(table);
 
 		GridBagConstraints gbc_table = new GridBagConstraints();
@@ -68,9 +78,10 @@ public class frmPrincipal extends JFrame {
 		gbc_table.fill = GridBagConstraints.BOTH;
 		gbc_table.gridx = 0;
 		gbc_table.gridy = 1;
-		contentPane.add(scroll, gbc_table);
+		contentPane.add(scroll, gbc_table);*/
 		
 	}
+	/*
 	public String[] getListeCBox(){
 
 		int num=0;
@@ -113,7 +124,7 @@ public class frmPrincipal extends JFrame {
 		}
 
 		return retour;
-	}
+	}*/
 	public HashMap<Integer, Long> getAddresseMap() {
 		return addresseMap;
 	}
@@ -378,6 +389,7 @@ public class frmPrincipal extends JFrame {
 
 	public static void main(String[] args) {
 		//frmPrincipal frame = new frmPrincipal();
+		//frame.setVisible(true);
 		//System.out.println(frame.chercherLivre(1000));
 		//frame.modifierLivre(300);
 		//System.out.println(frame.chercherLivre(300));
@@ -400,6 +412,7 @@ public class frmPrincipal extends JFrame {
 			}
 		});
 	}
+	
 	public JPanel getContentPane() {
 		return contentPane;
 	}
