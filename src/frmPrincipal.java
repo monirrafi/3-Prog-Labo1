@@ -27,7 +27,7 @@ public class frmPrincipal extends JFrame {
 	 */
 	public frmPrincipal() {
 		chargerLivres();
-		remplirTable("");
+		//remplirTable("");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 608, 364);
 		contentPane = new JPanel();
@@ -53,20 +53,14 @@ public class frmPrincipal extends JFrame {
 		gbc_tlBar.gridy = 0;
 		contentPane.add(tlBar, gbc_tlBar);
 
-		JButton btn = new JButton("text");
-		tlBar.add(btn);
-/*
-		//String[] liste = getListeCBox();
 		JComboBox cmbLivres = new JComboBox();
 		tlBar.add(cmbLivres);
-		//String[] liste = getListeCBox();		
-		cmbLivres.setModel(new DefaultComboBoxModel());
+		cmbLivres.setModel(new DefaultComboBoxModel(new String[] {"livres", "box"}));
 		cmbLivres.setToolTipText("");
 		
 		JComboBox cmbbCathegorie = new JComboBox();
 		cmbbCathegorie.setToolTipText("");
 		tlBar.add(cmbbCathegorie);
-*/
 		scroll = new JScrollPane(table);
 
 		GridBagConstraints gbc_table = new GridBagConstraints();
